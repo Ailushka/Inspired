@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 export const Gender = ({ list }) => {
   const location = useLocation();
-  const activeGender = location.pathname.slice(1) || 'women';
+  const activeGender = location.pathname.split('/')[1] || 'women';
 
   return (
     <ul className={style.gender}>
