@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import style from './Gender.module.scss';
 import cn from 'classnames';
 
-
 export const Gender = () => {
   const { activeGender, genderList, categories } = useSelector(state => state.navigation);
 

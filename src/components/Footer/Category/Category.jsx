@@ -5,7 +5,6 @@ import cn from 'classnames';
 
 export const Category = ({ titleClassName, linkClassName }) => {
   const { genderList, categories } = useSelector(state => state.navigation);
-  console.log(categories);
 
   return (
     <div className={style.category}>

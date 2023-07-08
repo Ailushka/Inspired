@@ -5,7 +5,7 @@ import { MainPage } from './Components/MainPage/MainPage.jsx';
 import { ErrorPage } from './Components/ErrorPage/ErrorPage.jsx';
 import { Root } from './routes/Root.jsx';
 import { fetchNavigation } from './features/navigationSlice.js';
-import { fetchColors } from './features/colorsSlice.js';
+import { fetchColors } from './features/colorSlice.js';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,9 +27,6 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(fetchNavigation());
-  }, [dispatch]);
-
-  useEffect(() => {
     dispatch(fetchColors());
   }, [dispatch]);
 
