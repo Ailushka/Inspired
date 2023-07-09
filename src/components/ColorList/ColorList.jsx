@@ -9,7 +9,7 @@ export const ColorList = ({ colors }) => {
     <ul className={style.colorList}>
       {colors.map((id, item) => {
         const color = colorList.find(color => color.id === id);
-        return <li key={id}><Color color={color?.code} checked={!item} /></li>
+        return <Color key={id} color={color?.code} checked={!item} />
       })}
     </ul>
   )

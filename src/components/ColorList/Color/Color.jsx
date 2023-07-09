@@ -1,28 +1,19 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import style from './Color.module.scss';
 import cn from 'classnames';
 
 export const Color = ({ color, checked }) => {
-  const inputColorRef = useRef();
-  const [isChecked, setIsChecked] = useState(checked);
+  const colorRef = useRef(null);
 
-  function handleClick() {
-    setIsChecked(inputColorRef.current.checked);
-  }
+  useEffect(() => {
+    colorRef.current.style.setProperty('--data-color', color)
+  }, [color])
 
   return (
-    <label
-      className={isChecked ? cn(style.color, style.colorCheck) : cn(style.color)}
-      style={{'--data-color': color}}
-    >
-      <input
-        type="radio"
-        name="color"
-        value={color}
-        id="#"
-        ref={inputColorRef}
-        onClick={handleClick}
-      />
-    </label>
+    <li
+      ref={colorRef}
+      className={cn(style.color, checked ? style.colorCheck : '')}
+      // style={{'--data-color': color}}
+    />
   )
 }
