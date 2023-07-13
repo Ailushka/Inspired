@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { Container } from '../../Layout/Container/Container.jsx';
 import style from './Top.module.scss';
 import cn from 'classnames';
@@ -7,9 +8,9 @@ export const Top = () => (
   <div className={style.top}>
     <Container className={style.topContainer}>
       <a className={cn(style.topLink, style.topPhone)} href="tel:89304902620">8 930 490 26 20</a>
-      <a className={style.topLogo} href="/">
+      <NavLink className={style.topLogo} to="/">
         <img src={logo} alt="Логотип Inspired" />
-      </a>
+      </NavLink>
       <div className={style.topNavigation}>
         <ul className={style.topNavList}>
           <li className={style.topNavItem}>

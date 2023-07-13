@@ -9,18 +9,18 @@ export const Banner = ({data}) => {
   const isMobile = useMedia('(max-width: 540px)');
   const isTablet = useMedia('(max-width: 768px)');
   const isLaptop = useMedia('(max-width: 1024px)');
-  const [backgroundImage, setBackgroundImage] = useState('');
+  const [bgURL, setBgURL] = useState('');
 
   useEffect(() => {
 
     if (isMobile) {
-      setBackgroundImage(data?.bg.mobile);
+      setBgURL(data?.bg.mobile);
     } else if (isTablet) {
-      setBackgroundImage(data?.bg.tablet);
+      setBgURL(data?.bg.tablet);
     } else if (isLaptop) {
-      setBackgroundImage(data?.bg.laptop);
+      setBgURL(data?.bg.laptop);
     } else {
-      setBackgroundImage(data?.bg.desktop);
+      setBgURL(data?.bg.desktop);
     }
   }, [isMobile, isTablet, isLaptop, data]);
 
@@ -28,7 +28,7 @@ export const Banner = ({data}) => {
     data &&
     <section
       className={style.banner}
-      style={{ backgroundImage: `url(${API_URL}${backgroundImage})` }}
+      style={{ backgroundImage: `url(${API_URL}${bgURL})` }}
     >
       <Container>
         <div className={style.content}>

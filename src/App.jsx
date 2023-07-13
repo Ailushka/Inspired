@@ -2,6 +2,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { MainPage } from './Components/MainPage/MainPage.jsx';
+import { ProductPage } from './Components/ProductPage/ProductPage.jsx';
 import { ErrorPage } from './Components/ErrorPage/ErrorPage.jsx';
 import { Root } from './routes/Root.jsx';
 import { fetchNavigation } from './features/navigationSlice.js';
@@ -12,6 +13,7 @@ const router = createBrowserRouter(
     <Route path='/' element={<Root />}>
       <Route index element={<MainPage />} />
       <Route path='catalog/:gender/:category?' element={<MainPage />} />
+      <Route path='product/:id' element={<ProductPage />} />
       <Route path='*' element={<ErrorPage />} />
     </Route>
   )

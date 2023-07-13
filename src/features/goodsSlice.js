@@ -16,6 +16,7 @@ export const fetchCategory = createAsyncThunk(
   async (param) => {
     const url = new URL(GOODS_URL);
     for (const key in param) {
+      console.log(param);
       url.searchParams.append(key, param[key]);
     }
     const response = await fetch(url);
