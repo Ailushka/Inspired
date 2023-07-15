@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container } from '../Layout/Container/Container.jsx';
 import { ColorList } from '../ColorList/ColorList.jsx';
-import { ProductSize } from '../ProductSize/ProductSize.jsx';
+import { ProductSize } from './ProductSize/ProductSize.jsx';
 import { Count } from '../Count/Count.jsx';
-import { ReactComponent as Like } from '../../assets/heart.svg';
 import { Goods } from '../Goods/Goods.jsx';
+import { BtnLike } from '../BtnLike/BtnLike.jsx';
 import { fetchCategory } from '../../features/goodsSlice.js';
 import { fetchProduct } from '../../features/productSlice.js';
 import { setActiveGender } from '../../features/navigationSlice.js';
@@ -18,7 +18,6 @@ export const ProductPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { product } = useSelector(state => state.product);
-  const { recommendedData } = useSelector(state => state.goods);
 
 const [count, setCount] = useState(1);
   const [selectedColor, setSelectedColor] = useState('');
@@ -61,7 +60,7 @@ const [count, setCount] = useState(1);
     <>
       <section className={style.card}>
         <Container className={style.container}>
-          <img src={product.pic && `${API_URL}${product.pic}`} alt={`${product.title} ${product.description}`} />
+          <img className={style.image} src={product.pic && `${API_URL}${product.pic}`} alt={`${product.title} ${product.description}`} />
           <form className={style.content}>
             <h2 className={style.title}>{product.title}</h2>
             <p className={style.price}>руб {product.price}</p>
@@ -95,19 +94,13 @@ const [count, setCount] = useState(1);
                 handleDecrement={handleDecrement}
               />
               <button className={style.addCart} type='submit'>В корзину</button>
-              <button
-                className={style.favorite}
-                aria-label='Добавить в избранное'
-                type='button'
-              >
-                <Like />
-              </button>
+              <BtnLike id={id} />
             </div>
 
           </form>
         </Container>
       </section>
-      <Goods categoryData={recommendedData} />
+      <Goods title='Вам также может понравиться' />
     </>
   )
 }
